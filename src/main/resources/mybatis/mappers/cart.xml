@@ -57,7 +57,7 @@
 		</foreach>
 <!-- 		이건원래 써있던거 order by g.goods_creDate desc  
 			여기서 g.goods_ <<<<<이거를 지워주니까 장바구니로 넘어가진다 왜지??? 여튼
-			그렇다는거
+			그렇다는거 :: 왜냐면 t_shopping_goods g 이걸 g로 해줬는데 당연히 못받는다?뭐 그런거
 -->
 		order by creDate desc<!-- 위의 주석을 이렇게 바꿈 -->
  	</select>
