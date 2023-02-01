@@ -45,7 +45,7 @@
 	</select>
 	
 	<select id="selectOverlappedID" parameterType="String" resultType="String">
-	   select from t_shopping_member <!-- decode(count(*),1, 'true', 0, 'false') -->
+	   select * from t_shopping_member <!-- decode(count(*),1, 'true', 0, 'false') -->
 	   where member_id = #{id}
 	</select>
 	
