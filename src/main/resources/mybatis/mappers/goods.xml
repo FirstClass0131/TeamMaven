@@ -70,11 +70,11 @@ order by t_shopping_goods.goods_id
 	
    <select id="selectGoodsBySearchWord" resultMap="goodsResult"   parameterType="String"  >
      <![CDATA[
-	select t_shopping_goods.*, t_goods_detail_image.fileName from t_shopping_goods, t_goods_detail_image
+select t_shopping_goods.*, t_goods_detail_image.fileName from t_shopping_goods, t_goods_detail_image
 where t_shopping_goods.goods_id=t_goods_detail_image.goods_id
 and t_goods_detail_image.filetype='main_image'
-and t_shopping_goods.goods_title like concat('%',#{searchWord},'%')
-order by t_shopping_goods.goods_entered_date desc
+and t_shopping_goods.goods_sort like CONCAT('%',#{searchWord}, '%')
+order by t_shopping_goods.goods_entered_date desc	
 		]]>
 	</select>	
 	
