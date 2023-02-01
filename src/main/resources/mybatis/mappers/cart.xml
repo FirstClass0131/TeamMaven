@@ -7,8 +7,8 @@
 	<!-- 리절트 맵 정의 -->
 	<resultMap id="cartResult" type="CartVO">
 		<result property="cart_id" column="cart_id" />
-		<result property="goods_title" column="goods_title" />
-		<result property="member_id" column="goods_id" />
+		<result property="goods_id" column="goods_id" />
+		<result property="member_id" column="member_id" />
 		<result property="cart_goods_qty" column="cart_goods_qty" />
 		<result property="creDate" column="creDate" />
 	</resultMap>
@@ -59,7 +59,7 @@
 
 	<select id="selectCountInCart" resultType="String" parameterType="cartVO">
 	    <![CDATA[
-		    select decode(count(*), 0, 'false', 'true') from t_shopping_cart
+		    select case count(*) when 0 then 'false' else 'true' END result from t_shopping_cart
 			where goods_id=#{goods_id}
 			  and member_id=#{member_id} 
 
