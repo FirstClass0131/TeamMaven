@@ -24,10 +24,11 @@ import net.sf.json.JSONObject;
 
 @Controller("goodsController")
 @RequestMapping(value="/goods")
-public class GoodsControllerImpl extends BaseController   implements GoodsController {
+public class GoodsControllerImpl extends BaseController implements GoodsController {
 	@Autowired
 	private GoodsService goodsService;
 	
+	@Override
 	@RequestMapping(value="/goodsDetail.do" ,method = RequestMethod.GET)
 	public ModelAndView goodsDetail(@RequestParam("goods_id") String goods_id,
 			                       HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -40,7 +41,7 @@ public class GoodsControllerImpl extends BaseController   implements GoodsContro
 		addGoodsInQuick(goods_id,goodsVO,session);
 		return mav;
 	}
-	
+	@Override
 	@RequestMapping(value="/keywordSearch.do",method = RequestMethod.GET,produces = "application/text; charset=utf8")
 	public @ResponseBody String  keywordSearch(@RequestParam("keyword") String keyword,
 			                                  HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -53,7 +54,7 @@ public class GoodsControllerImpl extends BaseController   implements GoodsContro
 		keyword = keyword.toUpperCase();
 	    List<String> keywordList =goodsService.keywordSearch(keyword);
 	    
-	 // ÃÖÁ¾ ¿Ï¼ºµÉ JSONObject ¼±¾ð(ÀüÃ¼)
+	 // ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¼ï¿½ï¿½ï¿½ JSONObject ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Ã¼)
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("keyword", keywordList);
 		 		
@@ -61,7 +62,7 @@ public class GoodsControllerImpl extends BaseController   implements GoodsContro
 	   // System.out.println(jsonInfo);
 	    return jsonInfo ;
 	}
-	
+	@Override
 	@RequestMapping(value="/searchGoods.do" ,method = RequestMethod.GET)
 	public ModelAndView searchGoods(@RequestParam("searchWord") String searchWord,
 			                       HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -72,14 +73,14 @@ public class GoodsControllerImpl extends BaseController   implements GoodsContro
 		return mav;
 		
 	}
-	
+
 	private void addGoodsInQuick(String goods_id,GoodsVO goodsVO,HttpSession session){
 		boolean already_existed=false;
-		List<GoodsVO> quickGoodsList; //ÃÖ±Ù º» »óÇ° ÀúÀå ArrayList
+		List<GoodsVO> quickGoodsList; //ï¿½Ö±ï¿½ ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ArrayList
 		quickGoodsList=(ArrayList<GoodsVO>)session.getAttribute("quickGoodsList");
 		
 		if(quickGoodsList!=null){
-			if(quickGoodsList.size() < 4){ //¹Ì¸®º» »óÇ° ¸®½ºÆ®¿¡ »óÇ°°³¼ö°¡ ¼¼°³ ÀÌÇÏÀÎ °æ¿ì
+			if(quickGoodsList.size() < 4){ //ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 				for(int i=0; i<quickGoodsList.size();i++){
 					GoodsVO _goodsBean=(GoodsVO)quickGoodsList.get(i);
 					if(goods_id.equals(_goodsBean.getGoods_id())){

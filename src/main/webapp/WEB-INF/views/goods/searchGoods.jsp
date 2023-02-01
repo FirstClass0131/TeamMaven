@@ -15,7 +15,7 @@ pageContext.setAttribute("br", "<br/>"); //br 태그
 </head>
 <body>
 	<hgroup>
-		<h1>컴퓨터와 인터넷</h1>
+		<h1>${item.goods_sort}</h1>
 		<h2>오늘의 책</h2>
 	</hgroup>
 	<section id="new_book">
@@ -43,7 +43,7 @@ pageContext.setAttribute("br", "<br/>"); //br 태그
 										<img width="75" alt=""
 										src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}">
 									</a>
-									<div class="sort">[컴퓨터 인터넷]</div>
+									<div class="sort">${item.goods_sort}</div>
 									<div class="title">
 										<a
 											href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
