@@ -29,7 +29,7 @@ public class CartControllerImpl extends BaseController implements CartController
 	private CartVO cartVO;
 	@Autowired
 	private MemberVO memberVO;
-	
+			//goodsDetail.jsp 에 연결이되어있는데 장바구니에 담았습니다. 부분의 장바구니 보기 클릭하면 실행이됨
 	@RequestMapping(value="/myCartList.do" ,method = RequestMethod.GET)
 	public ModelAndView myCartMain(HttpServletRequest request, HttpServletResponse response)  throws Exception {
 		String viewName=(String)request.getAttribute("viewName");
