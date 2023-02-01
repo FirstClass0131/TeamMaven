@@ -31,8 +31,8 @@ public class OrderDAOImpl implements OrderDAO {
 		
 	}	
 	
-	public OrderVO findMyOrder(String order_id) throws DataAccessException{
-		OrderVO orderVO=(OrderVO)sqlSession.selectOne("mapper.order.selectMyOrder",order_id);		
+	public OrderVO findMyOrder(int order_id) throws DataAccessException{
+		OrderVO orderVO=(OrderVO)sqlSession.selectList("mapper.order.selectMyOrder",order_id);		
 		return orderVO;
 	}
 	

@@ -51,8 +51,8 @@
 		]]>
 	</select>
 	<insert id="insertNewOrder" parameterType="orderVO"  >
-	    <selectKey resultType="int" keyProperty="order_seq_num" order="BEFORE">
-	    	select order_seq_num.nextval from dual
+	    <selectKey resultType="int" keyProperty="order_id" order="BEFORE">
+	    	select * from t_shopping_order
 	    </selectKey>
 	    <![CDATA[
 			insert into t_shopping_order(order_seq_num,
@@ -108,9 +108,9 @@
     	]]>
 	</insert>
 
-   <select id="selectOrderID" resultType="int"  >
+   <select id="selectOrderID" resultType="int" parameterType="orderVO">
 	    <![CDATA[
-		    select seq_order_id.nextval from dual
+		    select order_id from t_shopping_order
     	]]>
 	</select>
 	
