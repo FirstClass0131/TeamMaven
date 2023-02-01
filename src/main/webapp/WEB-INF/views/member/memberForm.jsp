@@ -78,7 +78,7 @@
 				id : _id
 			},
 			success : function(data, textStatus) {
-				if (data == 'false') {
+				if (data != _id) {
 					alert("사용할 수 있는 ID입니다.");
 					$('#btnOverlapped').prop("disabled", true);
 					$('#_member_id').prop("disabled", true);
