@@ -539,7 +539,7 @@
 							</h2>
 						</td>
 						<td>
-							<h2>${item.order_goods_qty }개<h2>
+							<h2>${item.order_goods_qty }개</h2>
 									<input type="hidden" id="h_order_goods_qty"
 										name="h_order_goods_qty" value="${item.order_goods_qty}" />
 						</td>
