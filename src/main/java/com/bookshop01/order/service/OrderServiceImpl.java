@@ -26,11 +26,11 @@ public class OrderServiceImpl implements OrderService {
 	
 	public void addNewOrder(List<OrderVO> myOrderList) throws Exception{
 		orderDAO.insertNewOrder(myOrderList);
-		//Ä«Æ®¿¡¼­ ÁÖ¹® »óÇ° Á¦°ÅÇÑ´Ù.
+		//Ä«Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		orderDAO.removeGoodsFromCart(myOrderList);
 	}	
 	
-	public OrderVO findMyOrder(String order_id) throws Exception{
+	public OrderVO findMyOrder(int order_id) throws Exception{
 		return orderDAO.findMyOrder(order_id);
 	}
 
