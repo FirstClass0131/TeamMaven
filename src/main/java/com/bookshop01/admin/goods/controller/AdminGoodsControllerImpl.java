@@ -45,8 +45,8 @@ public class AdminGoodsControllerImpl extends BaseController  implements AdminGo
 		session.setAttribute("side_menu", "admin_mode"); //���������� ���̵� �޴��� �����Ѵ�.
 		
 		String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");
-		int section = Integer.parseInt(dateMap.get("section"));
-		int pageNum = Integer.parseInt(dateMap.get("pageNum"));
+		String section = dateMap.get("section");
+		String pageNum = dateMap.get("pageNum");
 		String beginDate=null,endDate=null;
 		
 		String [] tempDate=calcSearchPeriod(fixedSearchPeriod).split(",");
@@ -56,16 +56,12 @@ public class AdminGoodsControllerImpl extends BaseController  implements AdminGo
 		dateMap.put("endDate", endDate);
 		
 		Map<String,Object> condMap=new HashMap<String,Object>();
-		if(section== 0) {
-			for(int i=0; i<=10; i++) {
-				section = i;
-			}
+		if(section== null) {
+			section = "1";
 		}
 		condMap.put("section",section);
-		if(pageNum== 0) {
-			for(int j=0; j<=10; j++) {
-				pageNum = j;
-			}
+		if(pageNum== null) {
+			pageNum = "1";
 		}
 		condMap.put("pageNum",pageNum);
 		condMap.put("beginDate",beginDate);

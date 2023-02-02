@@ -139,34 +139,32 @@
 											   								 #{reg_id} )
 		]]>
 	</insert> 
-	<select id="selectNewGoodsList" resultMap="goodsResult"   parameterType="java.util.Map"  >
-	    <![CDATA[
-		  select * from (
-			   select rowNum as recNum,
-			   		  goods_id,
-			          goods_title,
-			          goods_writer,
-			          goods_publisher,
-			          goods_sales_price,
-			          to_char(goods_creDate,'YYYY-MM-DD')  as goods_creDate,
-			          to_char(goods_published_date,'YYYY-MM-DD') as goods_published_date
-			       from (
-			             select  goods_id,
-			             		 goods_title,
-			             		 goods_writer,
-			             		 goods_publisher,
-			             		 goods_sales_price,
-			             		 goods_creDate,
-			             		 goods_published_date
-			              from t_shopping_goods 
-			                where  to_char(goods_creDate,'YYYY-MM-DD')  between #{beginDate} and #{endDate}
-			               order by goods_creDate desc
-					    )
-				)							
-			where				
-		recNum between (#{section}-1)*100+ (#{pageNum}-1)*10+1 and (#{section}-1)*100+(#{pageNum})*10				        
-    	]]>
-	</select>
+	
+	<!-- 수정 -->
+	<select id="selectNewGoodsList" resultMap="goodsResult" parameterType="java.util.Map">
+       <![CDATA[
+       select * from ( 
+       select @rownum := @rownum + 1 as recNum, 
+                   t_tbl.goods_id,
+                   t_tbl.goods_title,
+                   t_tbl.goods_writer,
+                   t_tbl.goods_publisher,
+                   t_tbl.goods_sales_price,
+                   date_format(t_tbl.goods_entered_date,'%Y-%m-%d')  as goods_entered_date,
+                   date_format(t_tbl.goods_published_date,'%Y-%m-%d') as goods_published_date
+           from 
+              ( select goods_id, 
+              goods_title, 
+              goods_writer, 
+              goods_publisher, 
+              goods_sales_price, 
+              date_format(goods_entered_date,'%Y-%m-%d')  as goods_entered_date, date_format(goods_published_date,'%Y-%m-%d') as goods_published_date from t_shopping_goods 
+               where date_format(goods_entered_date,'%Y-%m-%d') BETWEEN '2021-12-31' AND '2023-12-31') as t_tbl, (select @rownum := 0) as rowcolumn
+         order by goods_entered_date desc ) t
+         where recNum between (#{section}-1)*100+ (#{pageNum}-1)*10+1 and (#{section}-1)*100+(#{pageNum})*10
+       ]]>
+</select>
+	<!-- 수정 -->
 	
 	<select id="selectOrderGoodsList" resultMap="orderGoodsResult"   parameterType="java.util.Map"  >
 		  select * from (
