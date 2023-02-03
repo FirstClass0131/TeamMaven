@@ -168,10 +168,10 @@
 	
 	<select id="selectOrderGoodsList" resultMap="orderGoodsResult"   parameterType="java.util.Map"  >
 		  select * from (
-			    select rowNum as recNum,t.*
+			    select @rownum := @rownum + 1 as recNum ,t.*
 			       from (
 			              select  *  from t_shopping_order 
-			              where to_char(pay_order_time,'yyyy-mm-dd')  between #{beginDate} and #{endDate}
+			              where date_format(pay_order_time,'%Y-%m-%d') between #{beginDate} and #{endDate}
 			                <if test="search_type=='orderer_id'">
 			                  AND orderer_id=#{search_word}
 			                </if>
