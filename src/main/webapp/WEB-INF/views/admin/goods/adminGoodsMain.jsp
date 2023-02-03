@@ -199,7 +199,7 @@ function  calcPeriod(search_period){
 							<TD><strong>${item.goods_writer }</strong></TD>
 							<TD><strong>${item.goods_publisher }</strong></TD>
 							<td><strong>${item.goods_sales_price }</strong></td>
-							<td><strong>${item.goods_credate }</strong></td>
+							<td><strong>${item.goods_entered_date }</strong></td> <!-- 수정 -->
 							<td><c:set var="pub_date"
 									value="${item.goods_published_date}" /> <c:set var="arr"
 									value="${fn:split(pub_date,' ')}" /> <strong> <c:out

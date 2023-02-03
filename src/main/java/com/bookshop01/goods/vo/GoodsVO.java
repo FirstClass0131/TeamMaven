@@ -24,7 +24,7 @@ public class GoodsVO {
 	private String goods_intro;
 	private String goods_publisher_comment;
 	private String goods_recommendation;
-	private Date   goods_credate;
+	private Date   goods_entered_date;
 	
 	public GoodsVO() {
 	}
@@ -243,12 +243,12 @@ public class GoodsVO {
 		this.goods_recommendation = goods_recommendation;
 	}
 
-	public Date getGoods_credate() {
-		return goods_credate;
+	public Date getgoods_entered_date() {
+		return goods_entered_date;
 	}
 
-	public void setGoods_credate(Date goods_credate) {
-		this.goods_credate = goods_credate;
+	public void setgoods_entered_date(Date goods_credate) {
+		this.goods_entered_date = goods_entered_date;
 	}
 	
 
