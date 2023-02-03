@@ -290,7 +290,7 @@ function fn_order_all_cart_goods(){
                            <img width="75" alt=""
                            src="${contextPath}/resources/image/btn_add_list.jpg">
                         </A><br> 
-                        <a href="javascript:delete_cart_goods('${cart_id}');""> 
+                        <a href="javascript:delete_cart_goods('${cart_id}');"> 
                            <img width="75" alt=""
                               src="${contextPath}/resources/image/btn_delete.jpg">
                         </a>
