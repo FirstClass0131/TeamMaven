@@ -435,10 +435,10 @@ function fn_detail_search(){
 											value="${arr[0]}" /></strong></td>
 								<td width=10%><c:choose>
 										<c:when test="${item.del_yn=='N' }">
-											<strong>활동중</strong>
+											<strong>탈퇴</strong>
 										</c:when>
 										<c:otherwise>
-											<strong>탈퇴</strong>
+											<strong>활동중</strong>
 										</c:otherwise>
 									</c:choose></td>
 							</tr>
@@ -446,11 +446,10 @@ function fn_detail_search(){
 					</c:otherwise>
 				</c:choose>
 				<tr>
-					<td colspan=8 class="fixed"><c:forEach var="page" begin="1"
-							end="10" step="1">
+					<td colspan=8 class="fixed">
+					<c:forEach var="page" begin="1" end="10" step="1">
 							<c:if test="${chapter >1 && page==1 }">
-								<a
-									href="${pageContext.request.contextPath}/admin/member/adminMemberMain.do?chapter=${chapter-1}&pageNum=${(chapter-1)*10 +1 }">&nbsp;pre
+								<a href="${pageContext.request.contextPath}/admin/member/adminMemberMain.do?chapter=${chapter-1}&pageNum=${(chapter-1)*10 +1 }">&nbsp;pre
 									&nbsp;</a>
 							</c:if>
 							<a
@@ -472,16 +471,12 @@ function fn_detail_search(){
 			<DIV id="page_wrap">
 				<c:forEach var="page" begin="1" end="10" step="1">
 					<c:if test="${chapter >1 && page==1 }">
-						<a
-							href="${pageContext.request.contextPath}/admin/member/adminMemberMain.do?chapter=${chapter-1}&pageNum=${(chapter-1)*10 +1 }">&nbsp;pre
+						<a href="${pageContext.request.contextPath}/admin/member/adminMemberMain.do?chapter=${chapter-1}&pageNum=${(chapter-1)*10 +1 }">&nbsp;pre
 							&nbsp;</a>
 					</c:if>
-					<a
-						href="${pageContext.request.contextPath}/admin/member/adminMemberMain.do?chapter=${chapter}&pageNum=${page}">${(chapter-1)*10 +page }
-					</a>
+					<a href="${pageContext.request.contextPath}/admin/member/adminMemberMain.do?chapter=${chapter}&pageNum=${page}">${(chapter-1)*10 +page }</a>
 					<c:if test="${page ==10 }">
-						<a
-							href="${pageContext.request.contextPath}/admin/member/adminMemberMain.do?chapter=${chapter+1}&pageNum=${chapter*10+1}">&nbsp;
+						<a href="${pageContext.request.contextPath}/admin/member/adminMemberMain.do?chapter=${chapter+1}&pageNum=${chapter*10+1}">&nbsp;
 							next</a>
 					</c:if>
 				</c:forEach>
