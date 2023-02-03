@@ -117,7 +117,28 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		String viewName=(String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
-	}	
+	}
+	
+	//여기서부터 회원탈퇴 
+	
+	@Override
+	@RequestMapping(value="/myDel.do" ,method = RequestMethod.GET)
+	public ModelAndView deleteId(@RequestParam("login_id") String login_id, HttpServletRequest request, HttpServletResponse response)  throws Exception {
+		
+		HttpSession session=request.getSession();
+		session=request.getSession();
+		session.setAttribute("isLogOn", false);
+		
+		String viewName=(String)request.getAttribute("viewName");//viewName는 뭐지?
+		ModelAndView mav = new ModelAndView();
+		myPageService.deleteId(login_id);
+		mav.setViewName("redirect://main/main.do");
+		return mav;
+	}
+	
+	
+	
+	
 	
 	@Override
 	@RequestMapping(value="/modifyMyInfo.do" ,method = RequestMethod.POST)

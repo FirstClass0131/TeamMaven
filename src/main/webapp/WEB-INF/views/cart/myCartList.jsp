@@ -242,21 +242,15 @@ function fn_order_all_cart_goods(){
 											type="number" var="total_sales_price" />
 										${total_sales_price}원
 								</strong></td>
-								<td><a
-									href="javascript:fn_order_each_goods('${item.goods_id }','${item.goods_title }','${item.goods_sales_price}','${item.goods_fileName}');">
-										<img width="75" alt=""
-										src="${contextPath}/resources/image/btn_order.jpg">
-								</a><br> <a href="#"> <img width="75" alt=""
-										src="${contextPath}/resources/image/btn_order_later.jpg">
-								</a><br> <a href="#"> <img width="75" alt=""
-										src="${contextPath}/resources/image/btn_add_list.jpg">
-								</A><br> <a href="javascript:delete_cart_goods('${cart_id}');"">
-										<img width="75" alt=""
-										src="${contextPath}/resources/image/btn_delete.jpg">
+								<td><a href="javascript:fn_order_each_goods('${item.goods_id }','${item.goods_title }','${item.goods_sales_price}','${item.goods_fileName}');">
+										<img width="75" alt="" src="${contextPath}/resources/image/btn_order.jpg">
+								</a><br> <a href="#"> <img width="75" alt="" src="${contextPath}/resources/image/btn_order_later.jpg">
+								</a><br> <a href="#"> <img width="75" alt="" src="${contextPath}/resources/image/btn_add_list.jpg">
+								</A><br> <a href="javascript:delete_cart_goods('${cart_id}');">
+										<img width="75" alt="" src="${contextPath}/resources/image/btn_delete.jpg">
 								</a></td>
 					</tr>
-					<c:set var="totalGoodsPrice"
-						value="${totalGoodsPrice+item.goods_sales_price*0.9*cart_goods_qty }" />
+					<c:set var="totalGoodsPrice" value="${totalGoodsPrice+item.goods_sales_price*0.9*cart_goods_qty }" />
 					<c:set var="totalGoodsNum" value="${totalGoodsNum+1 }" />
 					</c:forEach>
 		</tbody>

@@ -9,6 +9,7 @@ public class CartVO {
 	private String member_id;
 	private int cart_goods_qty;
 	private String creDate;
+
 	
 	
 	public int getCart_id() {

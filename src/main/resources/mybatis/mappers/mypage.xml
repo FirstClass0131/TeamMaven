@@ -58,10 +58,10 @@
     	]]>
 	</select>
 		<select id="selectMyOrderHistoryList" resultMap="orderGoodsResult"   parameterType="java.util.Map"  >
+	    <!--  and  to_char(pay_order_time,'yyyy-mm-dd')  between #{beginDate} and #{endDate} -->
 	    <![CDATA[
 		  select * from t_shopping_order
-          where member_id=#{member_id}
-          and  to_char(pay_order_time,'yyyy-mm-dd')  between #{beginDate} and #{endDate}
+          where member_id=#{member_id} and  DATE_FORMAT(pay_order_time,'%Y%m%d%H%i%s')
           order by pay_order_time desc
     	]]>
 	</select>	
@@ -143,6 +143,13 @@
 	 	  set delivery_state='cancel_order'
 	   where order_id=#{order_id}
 	</update>
+	
+	<!-- 회원탈퇴할때 sql 구문넣음 -->
+	<delete id="deletedelId" parameterType="String">
+	  delete from t_shopping_member
+	  where member_id=#{login_id}
+	</delete>
+	
 		
 		
 </mapper>

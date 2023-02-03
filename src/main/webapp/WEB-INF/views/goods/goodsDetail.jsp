@@ -48,8 +48,7 @@
 			async : false, //false인 경우 동기식으로 처리한다.
 			url : "${contextPath}/cart/addGoodsInCart.do",
 			data : {
-				goods_id:goods_id,
-				order_goods_qty:$('#order_goods_qty').val()
+			goods_id:goods_id, order_goods_qty:$('#order_goods_qty').val()
 				
 			},
 			success : function(data, textStatus) {
@@ -66,7 +65,7 @@
 				alert("로그인부터해라."+data);
 			},
 			complete : function(data, textStatus) {
-				//alert("작업을완료 했습니다");
+				alert("장바구니 추가완료 했습니다");
 			}
 		}); //end ajax	
 	}
@@ -200,8 +199,7 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 				</tr>
 				<tr>
 					<td class="fixed">수량</td>
-					<td class="fixed"><select style="width: 60px;"
-						id="order_goods_qty">
+					<td class="fixed"><select style="width: 60px;" id="order_goods_qty">
 							<option>1</option>
 							<option>2</option>
 							<option>3</option>
@@ -211,13 +209,9 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 				</tr>
 			</tbody>
 		</table>
-		<ul>
-			<li><a class="buy"
-				href="javascript:fn_order_each_goods('${goods.goods_id }','${goods.goods_title }','${goods.goods_sales_price}','${goods.goods_fileName}');">구매하기
-			</a></li>
-			<li><a class="cart"
-				href="javascript:add_cart('${goods.goods_id }')">장바구니</a></li>
-
+		<ul>		
+			<li><a class="buy" href="javascript:fn_order_each_goods('${goods.goods_id }','${goods.goods_title }','${goods.goods_sales_price}','${goods.goods_fileName}');">구매하기</a></li>
+			<li><a class="cart" href="javascript:add_cart('${goods.goods_id }','order_goods_qty')">장바구니</a></li>
 			<li><a class="wish" href="#">위시리스트</a></li>
 		</ul>
 	</div>

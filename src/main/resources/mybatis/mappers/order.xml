@@ -43,21 +43,23 @@
 	</resultMap>
 	
 	 <select id="selectMyOrderList" resultMap="orderGoodsResult"  parameterType="orderVO"  >
+	 <!-- to_char(오라클 문법) -> DATE_FORMAT(mysql)으로 변경해 시벌 -->
 	    <![CDATA[
 			select * from t_shopping_order
-			where to_char(pay_order_time,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd') 
+			 
+			where DATE_FORMAT(pay_order_time,'%Y%m%d%H%i%s')=DATE_FORMAT(sysdate,'%Y%m%d%H%i%s')
         	and member_id=#{member_id}
         	order by pay_order_time desc
 		]]>
 	</select>
 	<insert id="insertNewOrder" parameterType="orderVO"  >
 	    <selectKey resultType="int" keyProperty="order_id" order="BEFORE">
-	    	select * from t_shopping_order
+	    	select IFNULL(max(order_seq_num), 0) + 1 from t_shopping_order 
 	    </selectKey>
 	    <![CDATA[
 			insert into t_shopping_order(order_seq_num,
 			                            order_id,
-										  member_id,
+										member_id,
 									    goods_id,
 									    goods_title,
 									    goods_fileName,
@@ -110,14 +112,16 @@
 
    <select id="selectOrderID" resultType="int" parameterType="orderVO">
 	    <![CDATA[
-		    select order_id from t_shopping_order
+		    select IFNULL(max(order_id), 0) + 1 from t_shopping_order
     	]]>
 	</select>
 	
 	<select id="selectMyOrder" resultMap="orderGoodsResult"   parameterType="String"  >
+	    <!-- where to_char(pay_order_time,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd')  이거를 저걸로 바꿔줌 밑에 왜냐? mysql 이라서 오라클은안됨 -->
 	    <![CDATA[
 		    select * from t_shopping_order
-            where to_char(pay_order_time,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd') 
+            
+            where DATE_FORMAT(pay_order_time,'%Y%m%d%H%i%s')=DATE_FORMAT(sysdate,'%Y%m%d%H%i%s')
             and order_id=#{order_id}
             order by pay_order_time desc
     	]]>

@@ -40,7 +40,8 @@
 		 
 		select cart_id, goods_id, member_id, cart_goods_qty, creDate 
 		from t_shopping_cart 
-		where member_id=#{member_id} 
+		where member_id=#{member_id}
+		order by goods_id
 		]]>
 	</select>
 
@@ -55,11 +56,9 @@
 		<foreach item="item" collection="list" open="(" separator="," close=")">
 			#{item.goods_id}
 		</foreach>
-<!-- 		이건원래 써있던거 order by g.goods_creDate desc  
-			여기서 g.goods_ <<<<<이거를 지워주니까 장바구니로 넘어가진다 왜지??? 여튼
-			그렇다는거 :: 왜냐면 t_shopping_goods g 이걸 g로 해줬는데 당연히 못받는다?뭐 그런거
--->
-		order by creDate desc<!-- 위의 주석을 이렇게 바꿈 -->
+		order by goods_id
+		<!--  order by goods_id <<< 내림차순으로 정렬 하겠다  goods_id 기준으로-->
+		
  	</select>
 
 	<select id="selectCountInCart" resultType="String" parameterType="cartVO">
@@ -76,10 +75,12 @@
 	    <![CDATA[
 		    	insert into t_shopping_cart(cart_id,
 		    	                           goods_id,
-		    	                           member_id)
+		    	                           member_id,
+		    	                           cart_goods_qty)
 		        				 values(#{cart_id},
     							        #{goods_id},
-    							        #{member_id})
+    							        #{member_id},
+    							        #{cart_goods_qty})
     	]]>
 	</insert>
 
@@ -100,7 +101,7 @@
 	
 	<select id="selectMaxCartId" resultType="int">
 	    <![CDATA[
-			select nvl(max(cart_id), 0) + 1 from t_shopping_cart 
+			select IFNULL(max(cart_id), 0) + 1 from t_shopping_cart 
     	]]>
 	</select>
 

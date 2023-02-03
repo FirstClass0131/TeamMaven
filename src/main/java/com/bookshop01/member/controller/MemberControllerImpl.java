@@ -39,6 +39,11 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 			HttpSession session=request.getSession();
 			session=request.getSession();
 			session.setAttribute("isLogOn", true);
+			
+			//여기 밑 두줄 회원탈퇴 한거 추가
+			String login_id = memberVO.getMember_id();
+			session.setAttribute("login_id", login_id);
+			
 			session.setAttribute("memberInfo",memberVO);
 			
 			String action=(String)session.getAttribute("action");

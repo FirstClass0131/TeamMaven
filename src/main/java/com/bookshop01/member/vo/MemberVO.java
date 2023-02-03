@@ -107,11 +107,11 @@ public class MemberVO {
    public void setEmail2(String email2) {
       this.email2 = email2;
    }
-   public String getEmaists_yn() {
+   public String getEmailsts_yn() {
       return emailsts_yn;
    }
-   public void setEmaists_yn(String emaists_yn) {
-      this.emailsts_yn = emaists_yn;
+   public void setEmailsts_yn(String emailsts_yn) {
+      this.emailsts_yn = emailsts_yn;
    }
    public String getZipcode() {
       return zipcode;
