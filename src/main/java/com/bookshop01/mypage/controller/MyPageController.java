@@ -18,7 +18,11 @@ public interface MyPageController {
 	public ResponseEntity modifyMyInfo(@RequestParam("attribute")  String attribute,
 					            @RequestParam("value")  String value,
 					            HttpServletRequest request, HttpServletResponse response)  throws Exception;
+<<<<<<< HEAD
 	//밑의 myDel은 회원탈퇴를 위한것 원래 없던것
 	public ModelAndView deleteId(String login_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+=======
+	public ModelAndView deleteId(String order_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
+>>>>>>> refs/remotes/origin/master
 	
 }

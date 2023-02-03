@@ -48,7 +48,11 @@ public class MyPageDAOImpl implements MyPageDAO{
 
 	@Override
 	public void deleteId(String login_id) throws DataAccessException {
+<<<<<<< HEAD
 		sqlSession.delete("mapper.mypage.deletedelId",login_id);
+=======
+		sqlSession.selectOne("mapper.mypage.DeleteId",login_id);
+>>>>>>> refs/remotes/origin/master
 		
 	}
 }

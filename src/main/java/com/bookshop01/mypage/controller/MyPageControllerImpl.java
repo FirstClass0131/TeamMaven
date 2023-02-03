@@ -67,6 +67,8 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		return mav;
 	}
 	
+	
+	
 	@Override
 	@RequestMapping(value="/listMyOrderHistory.do" ,method = RequestMethod.GET)
 	public ModelAndView listMyOrderHistory(@RequestParam Map<String, String> dateMap,
@@ -139,6 +141,19 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 	
 	
 	
+	
+
+	@Override
+	@RequestMapping(value="/myDel.do" ,method={RequestMethod.GET})
+	public ModelAndView deleteId(@RequestParam("login_id")  String login_id,HttpServletRequest request, HttpServletResponse response)  throws Exception {
+		HttpSession session =request.getSession();
+		session.setAttribute("isLogOn", false);
+		myPageService.deleteId(login_id);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/main/main.do");
+		return mav;
+		
+	}
 	
 	@Override
 	@RequestMapping(value="/modifyMyInfo.do" ,method = RequestMethod.POST)

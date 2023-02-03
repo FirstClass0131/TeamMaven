@@ -12,6 +12,10 @@ public interface MyPageService{
 	public List<OrderVO> listMyOrderHistory(Map dateMap) throws Exception;
 	public MemberVO  modifyMyInfo(Map memberMap) throws Exception;
 	public void cancelOrder(String order_id) throws Exception;
+<<<<<<< HEAD
+=======
+	public MemberVO myDetailInfo(String member_id) throws Exception;
+>>>>>>> refs/remotes/origin/master
 	public void deleteId(String login_id)throws Exception;
 
 }

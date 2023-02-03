@@ -36,7 +36,11 @@
 						<li><a href="${contextPath}/mypage/myDetailInfo.do">회원정보관리</a></li>
 						<li><a href="#">나의 주소록</a></li>
 						<li><a href="#">개인정보 동의내역</a></li>
+<<<<<<< HEAD
 						<li><a href="${contextPath}/mypage/myDel.do?login_id=${login_id}" onclick="return confirm('탈퇴하시겠습니까?');">회원탈퇴</a></li><!-- 컨트롤러 연결 시켜줌 -->
+=======
+						<li><a href="${contextPath}/mypage/myDel.do?login_id=${login_id}" onclick="return confirm('탈퇴하시겠습니까?');">회원탈퇴</a></li>
+>>>>>>> refs/remotes/origin/master
 					</ul>
 				</li>
 			</c:when>

@@ -46,6 +46,7 @@ public class MyPageServiceImpl  implements MyPageService{
 	public MemberVO myDetailInfo(String member_id) throws Exception{
 		return myPageDAO.selectMyDetailInfo(member_id);
 	}
+<<<<<<< HEAD
 	
 
 	public void deleteId(String login_id) throws Exception {
@@ -55,4 +56,12 @@ public class MyPageServiceImpl  implements MyPageService{
 	
 	
 	
+=======
+
+	@Override
+	public void deleteId(String login_id) throws Exception {
+		myPageDAO.deleteId(login_id);
+		
+	}
+>>>>>>> refs/remotes/origin/master
 }

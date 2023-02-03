@@ -54,7 +54,11 @@
 	</select>
 	<insert id="insertNewOrder" parameterType="orderVO"  >
 	    <selectKey resultType="int" keyProperty="order_id" order="BEFORE">
+<<<<<<< HEAD
 	    	select IFNULL(max(order_seq_num), 0) + 1 from t_shopping_order 
+=======
+	    	select ifnull(max(order_id),0)+ 1 from t_shopping_order
+>>>>>>> refs/remotes/origin/master
 	    </selectKey>
 	    <![CDATA[
 			insert into t_shopping_order(order_seq_num,
@@ -112,7 +116,11 @@
 
    <select id="selectOrderID" resultType="int" parameterType="orderVO">
 	    <![CDATA[
+<<<<<<< HEAD
 		    select IFNULL(max(order_id), 0) + 1 from t_shopping_order
+=======
+		    select ifnull(max(order_id),0)+ 1 from t_shopping_order
+>>>>>>> refs/remotes/origin/master
     	]]>
 	</select>
 	

@@ -15,5 +15,9 @@ public interface MyPageDAO {
 	public void updateMyInfo(Map memberMap) throws DataAccessException;
 	public MemberVO selectMyDetailInfo(String member_id) throws DataAccessException;
 	public void updateMyOrderCancel(String order_id) throws DataAccessException;
+<<<<<<< HEAD
 	public void deleteId(String login_id)throws DataAccessException;
+=======
+	public void deleteId(String login_id) throws DataAccessException;
+>>>>>>> refs/remotes/origin/master
 }

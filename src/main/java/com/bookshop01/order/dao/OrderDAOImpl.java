@@ -36,7 +36,7 @@ public class OrderDAOImpl implements OrderDAO {
 		return orderVO;
 	}
 	
-	public void removeGoodsFromCart(OrderVO orderVO)throws DataAccessException{
+	public void removeGoodsFromCart(OrderVO orderVO)throws DataAccessException{ //최종 
 		sqlSession.delete("mapper.order.deleteGoodsFromCart",orderVO);
 	}
 	

@@ -144,12 +144,21 @@
 	   where order_id=#{order_id}
 	</update>
 	
+<<<<<<< HEAD
 	<!-- 회원탈퇴할때 sql 구문넣음 -->
 	<delete id="deletedelId" parameterType="String">
 	  delete from t_shopping_member
 	  where member_id=#{login_id}
 	</delete>
 	
+=======
+	<delete id="DeleteId" parameterType="String"  >
+	    <![CDATA[
+			delete from t_shopping_member
+			where member_id=#{login_id}
+    	]]>
+	</delete>	
+>>>>>>> refs/remotes/origin/master
 		
 		
 </mapper>
