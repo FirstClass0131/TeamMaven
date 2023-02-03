@@ -545,8 +545,7 @@ function fn_detail_search(){
 					</c:otherwise>
 				</c:choose>
 				<tr>
-					<td colspan=8 class="fixed"><c:forEach var="page" begin="1"
-							end="10" step="1">
+					<td colspan=8 class="fixed"><c:forEach var="page" begin="1" end="10" step="1">
 							<c:if test="${section >1 && page==1 }">
 								<a
 									href="${contextPath}/admin/order/adminOrderMain.do?chapter=${section-1}&pageNum=${(section-1)*10 +1 }">&nbsp;&nbsp;</a>
