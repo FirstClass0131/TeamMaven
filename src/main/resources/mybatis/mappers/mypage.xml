@@ -143,6 +143,13 @@
 	 	  set delivery_state='cancel_order'
 	   where order_id=#{order_id}
 	</update>
+	
+	<delete id="DeleteId" parameterType="String"  >
+	    <![CDATA[
+			delete from t_shopping_member
+			where member_id=#{login_id}
+    	]]>
+	</delete>	
 		
 		
 </mapper>

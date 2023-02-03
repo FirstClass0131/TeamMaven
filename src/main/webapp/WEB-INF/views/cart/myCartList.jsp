@@ -171,9 +171,9 @@ function fn_order_all_cart_goods(){
 			}
 		}	
 	}else{
-		order_goods_id=checked_goods.value;
-		order_goods_qty=cart_goods_qty.value;
-		cart_goods_qty.value=order_goods_id+":"+order_goods_qty;
+// 		order_goods_id=checked_goods.value;
+// 		order_goods_qty=cart_goods_qty.value;
+// 		cart_goods_qty.value=order_goods_id+":"+order_goods_qty;
 		//alert(select_goods_qty.value);
 	}
 		
@@ -256,8 +256,10 @@ function fn_order_all_cart_goods(){
 								</a></td>
 					</tr>
 					<c:set var="totalGoodsPrice"
-						value="${totalGoodsPrice+item.goods_sales_price*0.9*cart_goods_qty }" />
+						value="${totalGoodsPrice+item.goods_sales_price*cart_goods_qty }" />
 					<c:set var="totalGoodsNum" value="${totalGoodsNum+1 }" />
+					<c:set var="totalDeliveryPrice" value="${totalDeliveryPrice+ item.goods_delivery_price}" />
+					<c:set var="totalDiscountedPrice" value="${totalDiscountedPrice+ item.goods_sales_price*0.1*cart_goods_qty}" />
 					</c:forEach>
 		</tbody>
 	</table>
@@ -296,7 +298,7 @@ function fn_order_all_cart_goods(){
 				<td><img width="25" alt=""
 					src="${contextPath}/resources/image/plus.jpg"></td>
 				<td>
-					<p id="p_totalDeliveryPrice">${totalDeliveryPrice }원</p> <input
+					<p id="p_totalDeliveryPrice">${totalDeliveryPrice}원</p> <input
 					id="h_totalDeliveryPrice" type="hidden"
 					value="${totalDeliveryPrice}" />
 				</td>
