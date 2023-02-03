@@ -33,14 +33,15 @@
 					<td>
 						<h2>${item.order_goods_qty }개<h2>
 					</td>
-					<td><h2>${item.order_goods_qty *item.goods_sales_price}원
+					<td><h2>${item.order_goods_qty *item.goods_sales_price*0.9}원
 							(10% 할인)</h2></td>
-					<td><h2>0원</h2></td>
+					<td><h2>3000원</h2></td>
 					<td><h2>${1500 *item.order_goods_qty }원</h2></td>
 					<td>
-						<h2>${item.order_goods_qty *item.goods_sales_price}원</h2>
+						<h2>${item.order_goods_qty*item.goods_sales_price*0.9+3000}원</h2>
 					</td>
 			</TR>
+			<c:set var="totalGoodsNum" value="${totalGoodsNum+1 }" />
 			</c:forEach>
 		</TBODY>
 	</TABLE>

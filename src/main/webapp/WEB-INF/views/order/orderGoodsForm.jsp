@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+
 <!-- 주문자 휴대폰 번호 -->
 <c:set var="orderer_hp" value="" />
 <!-- 최종 결제 금액 -->
 <c:set var="final_total_order_price" value="0" />
-
+<!--주문 개수 -->
+<c:set  var="totalGoodsNum" value="0" /> 
 <!-- 총주문 금액 -->
 <c:set var="total_order_price" value="0" />
 <!-- 총 상품수 -->
@@ -386,7 +389,9 @@
 				+ i_jibunAddress.value + "]<br>" + i_namujiAddress.value;
 
 		delivery_message = i_delivery_message.value;
-
+		
+		var totalDiscountedPrice = document.getElementById("totalDiscountedPrice");
+		
 		var p_order_goods_id = document.getElementById("p_order_goods_id");
 		var p_order_goods_title = document
 				.getElementById("p_order_goods_title");
@@ -520,7 +525,7 @@
 					<td>주문금액합계</td>
 				</tr>
 				<tr>
-					<c:forEach var="item" items="${myOrderList }">
+					<c:forEach var="item" items="${myOrderList}" >
 						<td class="goods_image"><a
 							href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
 								<img width="75" alt=""
@@ -543,21 +548,22 @@
 									<input type="hidden" id="h_order_goods_qty"
 										name="h_order_goods_qty" value="${item.order_goods_qty}" />
 						</td>
-						<td><h2>${item.goods_sales_price}원(10% 할인)</h2></td>
-						<td><h2>0원</h2></td>
+						<td><h2>${item.goods_sales_price*0.9}원(10% 할인)</h2></td>
+						<td><h2>${3000}원</h2></td>
 						<td><h2>${1500 *item.order_goods_qty}원</h2></td>
 						<td>
-							<h2>${item.goods_sales_price * item.order_goods_qty}원</h2> <input
+							<h2>${item.goods_sales_price*0.9 * item.order_goods_qty+3000}원</h2> <input
 							type="hidden" id="h_each_goods_price" name="h_each_goods_price"
-							value="${item.goods_sales_price * item.order_goods_qty}" />
+							value="${item.goods_sales_price*0.9 * item.order_goods_qty+3000}" />
 						</td>
 				</tr>
-				<c:set var="final_total_order_price"
-					value="${final_total_order_price+ item.goods_sales_price* item.order_goods_qty}" />
+				
 				<c:set var="total_order_price"
 					value="${total_order_price+ item.goods_sales_price* item.order_goods_qty}" />
 				<c:set var="total_order_goods_qty"
 					value="${total_order_goods_qty+item.order_goods_qty }" />
+					<c:set var="totalGoodsNum" value="${totalGoodsNum+1 }" />
+					<c:set var="final_total_order_price" value="${(total_order_price*0.9)+totalGoodsNum*3000}" />
 				</c:forEach>
 			</tbody>
 		</table>
@@ -784,21 +790,22 @@
 					<td><IMG width="25" alt=""
 						src="${pageContext.request.contextPath}/resources/image/plus.jpg"></td>
 					<td>
-						<p id="p_totalDelivery">${total_delivery_price }원</p> <input
-						id="h_totalDelivery" type="hidden" value="${total_delivery_price}" />
+						<p id="p_totalDelivery">${totalGoodsNum*3000}원</p> 
+						<input	id="h_totalDelivery" type="hidden" value="${totalGoodsNum*3000}" />
+						
 					</td>
 					<td><img width="25" alt=""
 						src="${pageContext.request.contextPath}/resources/image/minus.jpg"></td>
 					<td>
-						<p id="p_totalSalesPrice">${total_discount_price }원</p> <input
+						<p id="p_totalSalesPrice">${total_order_price*0.1}원</p> <input
 						id="h_total_sales_price" type="hidden"
-						value="${total_discount_price}" />
+						value="${total_order_price*0.1}" />
 					</td>
 					<td><img width="25" alt=""
 						src="${pageContext.request.contextPath}/resources/image/equal.jpg"></td>
 					<td>
 						<p id="p_final_totalPrice">
-							<font size="15">${final_total_order_price }원 </font>
+							<font size="15">${final_total_order_price}원 </font>
 						</p> <input id="h_final_total_Price" type="hidden"
 						value="${final_total_order_price}" />
 					</td>
