@@ -15,7 +15,7 @@ pageContext.setAttribute("br", "<br/>"); //br 태그
 </head>
 <body>
 	<hgroup>
-		<h1>${item.goods_sort}</h1>
+		<h1>${goodsList[0].goods_sort}</h1>
 		<h2>오늘의 책</h2>
 	</hgroup>
 	<section id="new_book">

@@ -145,7 +145,7 @@ public class OrderControllerImpl extends BaseController implements OrderControll
 		}//end for
 		
 	    orderService.addNewOrder(myOrderList);
-		mav.addObject("myOrderInfo",receiverMap);//OrderVO�� �ֹ���� ��������  �ֹ��� ������ ǥ���Ѵ�.
+		mav.addObject("myOrderInfo",receiverMap);
 		mav.addObject("myOrderList", myOrderList);
 		return mav;
 	}

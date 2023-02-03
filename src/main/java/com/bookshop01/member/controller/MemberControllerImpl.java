@@ -41,6 +41,9 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 			session.setAttribute("isLogOn", true);
 			session.setAttribute("memberInfo",memberVO);
 			
+			String login_id = memberVO.getMember_id();
+			session.setAttribute("login_id", login_id);
+			
 			String action=(String)session.getAttribute("action");
 			if(action!=null && action.equals("/order/orderEachGoods.do")){
 				mav.setViewName("forward:"+action);
