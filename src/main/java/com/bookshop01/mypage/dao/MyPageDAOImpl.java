@@ -32,6 +32,16 @@ public class MyPageDAOImpl implements MyPageDAO{
 		return myOrderHistList;
 	}
 	
+	public List<OrderVO> selectMyCancelHistoryList(Map dateMap) throws DataAccessException{
+		List<OrderVO> myCancelHistList=(List)sqlSession.selectList("mapper.mypage.selectMyCancelHistoryList",dateMap);
+		return myCancelHistList;
+	}
+
+	public List<OrderVO> selectMyChangeHistoryList(Map dateMap) throws DataAccessException{
+		List<OrderVO> myCancelHistList=(List)sqlSession.selectList("mapper.mypage.selectMyChangeHistoryList",dateMap);
+		return myCancelHistList;
+	}
+	
 	public void updateMyInfo(Map memberMap) throws DataAccessException{
 		sqlSession.update("mapper.mypage.updateMyInfo",memberMap);
 	}

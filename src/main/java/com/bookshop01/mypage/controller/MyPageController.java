@@ -20,4 +20,7 @@ public interface MyPageController {
 					            HttpServletRequest request, HttpServletResponse response)  throws Exception;
 	public ModelAndView deleteId(String order_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
+	public ModelAndView listMyCancelHistory(@RequestParam Map<String, String> dateMap,HttpServletRequest request, HttpServletResponse response)  throws Exception;
+
+	public ModelAndView listMyChangeHistory(@RequestParam Map<String, String> dateMap,HttpServletRequest request, HttpServletResponse response)  throws Exception;
 }

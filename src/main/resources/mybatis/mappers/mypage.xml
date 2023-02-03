@@ -66,6 +66,24 @@
     	]]>
 	</select>	
 	
+		<select id="selectMyCancelHistoryList" resultMap="orderGoodsResult"   parameterType="java.util.Map"  >
+	    <![CDATA[
+		  select * from t_shopping_order
+          where member_id=#{member_id}
+          and  to_char(pay_order_time,'yyyy-mm-dd')  between #{beginDate} and #{endDate}
+          order by pay_order_time desc
+    	]]>
+	</select>	
+	
+		<select id="selectMyChangeHistoryList" resultMap="orderGoodsResult"   parameterType="java.util.Map"  >
+	    <![CDATA[
+		  select * from t_shopping_order
+          where member_id=#{member_id}
+          and  to_char(pay_order_time,'yyyy-mm-dd')  between #{beginDate} and #{endDate}
+          order by pay_order_time desc
+    	]]>
+	</select>	
+	
 	<update id="updateMyInfo" parameterType="java.util.HashMap">
 	   update t_shopping_member
 			   <set>

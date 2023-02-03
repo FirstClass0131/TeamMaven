@@ -34,6 +34,14 @@ public class MyPageServiceImpl  implements MyPageService{
 		return myPageDAO.selectMyOrderHistoryList(dateMap);
 	}
 	
+	public List<OrderVO> listMyCancelHistory(Map dateMap) throws Exception{
+		return myPageDAO.selectMyOrderHistoryList(dateMap);
+	}
+	
+	public List<OrderVO> listMyChangeHistory(Map dateMap) throws Exception{
+		return myPageDAO.selectMyOrderHistoryList(dateMap);
+	}
+	
 	public MemberVO  modifyMyInfo(Map memberMap) throws Exception{
 		 String member_id=(String)memberMap.get("member_id");
 		 myPageDAO.updateMyInfo(memberMap);
