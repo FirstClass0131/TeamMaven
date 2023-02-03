@@ -68,22 +68,33 @@
 		<result property="namujiAddress" column="namujiAddress" />
 		<result property="joinDate" column="joinDate" />
 	</resultMap>
+	
+	<!-- 수정  -->
 <select id="selectNewOrderList" resultMap="orderResult"   parameterType="java.util.HashMap"  >
-	select * from (
-		select @rownum := @rownum + 1 as recNum,
-		t_tbl.member_id,
-		t_tbl.goods_title,
-		date_format(t_tbl.pay_order_time,'%Y-%m-%d') as pay_order_time
-	from
-		( select member_id,
-		goods_title,
-		date_format(pay_order_time,'%Y-%m-%d') as pay_order_time from t_shopping_order
-		where date_format(pay_order_time,'%Y-%m-%d') BETWEEN '2021-12-31' AND
-		'2023-12-31') as t_tbl, (select @rownum := 0) as rowcolumn
-		order by pay_order_time desc ) t
-	where recNum between (#{section}-1)*100+ (#{pageNum}-1)*10+1 and
-	(#{section}-1)*100+(#{pageNum})*10		        
-	</select>
+    select * from (
+             select @rowNum := @rowNum + 1 as recNum,t_tbl.*
+            from (
+                  select  *  from t_shopping_order 
+                  where date_format(pay_order_time,'%Y-%m-%d') 
+                  between #{beginDate} and #{endDate}) AS t_tbl,
+                  
+                   <if test="search_type=='order_id'">
+                           AND order_id=#{search_word}
+                         </if>
+                         <if test="search_type=='orderer_name'">
+                           AND orderer_name=#{search_word}
+                         </if>
+                         <if test="search_type=='pay_orderer_hp_num'">
+                            AND pay_orderer_hp_num=#{search_word} 
+                         </if>
+                     (SELECT @rowNum:=0) AS rowColumn
+                       order by pay_order_time DESC
+                   )t 
+                                 
+         where            
+      recNum BETWEEN (#{section}-1)*100+ (#{pageNum}-1)*10+1 AND (#{section}-1)*100+(#{pageNum})*10
+   </select>
+
 	
 <update id="updateDeliveryState" parameterType="java.util.Map" >
 	   update t_shopping_order
