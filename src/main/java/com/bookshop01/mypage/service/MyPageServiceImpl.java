@@ -51,6 +51,12 @@ public class MyPageServiceImpl  implements MyPageService{
 	public void cancelOrder(String order_id) throws Exception{
 		myPageDAO.updateMyOrderCancel(order_id);
 	}
+	
+	//추가
+	public void returnOrder(String order_id) throws Exception{
+		myPageDAO.updateMyOrderReturn(order_id);
+	}
+	
 	public MemberVO myDetailInfo(String member_id) throws Exception{
 		return myPageDAO.selectMyDetailInfo(member_id);
 	}

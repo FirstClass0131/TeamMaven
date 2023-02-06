@@ -100,6 +100,7 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		return mav;
 	}	
 	
+	//수정
 	@Override
 	@RequestMapping(value="/listMyCancelHistory.do" ,method = RequestMethod.GET)
 	public ModelAndView listMyCancelHistory(@RequestParam Map<String, String> dateMap,
@@ -133,8 +134,7 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		return mav;
 	}	
 		
-	//change �߰�
-	
+	//수정
 	@Override
 	@RequestMapping(value="/listMyChangeHistory.do" ,method = RequestMethod.GET)
 	public ModelAndView listMyChangeHistory(@RequestParam Map<String, String> dateMap,
@@ -168,6 +168,7 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		return mav;
 	}	
 	
+	//수정
 	@Override
 	@RequestMapping(value="/cancelMyOrder.do" ,method = RequestMethod.POST)
 	public ModelAndView cancelMyOrder(@RequestParam("order_id")  String order_id,
@@ -179,13 +180,14 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		return mav;
 	}
 	
+	//수정
 	@Override
 	@RequestMapping(value="/returnMyOrder.do" ,method = RequestMethod.POST)
 	public ModelAndView returnMyOrder(@RequestParam("order_id")  String order_id,
 			                         HttpServletRequest request, HttpServletResponse response)  throws Exception {
 		ModelAndView mav = new ModelAndView();
-		myPageService.cancelOrder(order_id);
-		mav.addObject("message", "return_order");
+		myPageService.returnOrder(order_id);
+		mav.addObject("message", "returning_goods");
 		mav.setViewName("redirect:/mypage/myPageMain.do");
 		return mav;
 	}

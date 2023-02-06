@@ -18,6 +18,20 @@
 	}
 	</script>
 </c:if>
+
+<!-- 추가 -->
+<c:if test="${message=='returning_goods'}">
+	<script>
+	window.onload=function()
+	{
+	  init();
+	}
+	
+	function init(){
+		alert("반품했습니다.");
+	}
+	</script>
+</c:if>
 <script>
 function fn_cancel_order(order_id){
 	var answer=confirm("주문을 취소하시겠습니까?");
@@ -32,6 +46,24 @@ function fn_cancel_order(order_id){
 	    document.body.appendChild(formObj); 
 	    formObj.method="post";
 	    formObj.action="${contextPath}/mypage/cancelMyOrder.do";
+	    formObj.submit();	
+	}
+}
+
+/* 추가 */
+function fn_returning_goods(order_id){
+	var answer=confirm("반품하시겠습니까?");
+	if(answer==true){
+		var formObj=document.createElement("form");
+		var i_order_id = document.createElement("input"); 
+	    
+	    i_order_id.name="order_id";
+	    i_order_id.value=order_id;
+		
+	    formObj.appendChild(i_order_id);
+	    document.body.appendChild(formObj); 
+	    formObj.method="post";
+	    formObj.action="${contextPath}/mypage/returnMyOrder.do";
 	    formObj.submit();	
 	}
 }
@@ -52,6 +84,7 @@ function fn_cancel_order(order_id){
 				<td>주문상품</td>
 				<td>주문상태</td>
 				<td>주문취소</td>
+				<td>반품신청</td>
 			</tr>
 			<c:choose>
 				<c:when test="${ empty myOrderList  }">
@@ -114,6 +147,20 @@ function fn_cancel_order(order_id){
 												<input type="button"
 													onClick="fn_cancel_order('${item.order_id}')" value="주문취소"
 													disabled />
+											</c:otherwise>
+										</c:choose></td>
+										
+										<!-- 추가 -->
+										<td><c:choose>
+											<c:when test="${item.delivery_state=='returning_goods'}">
+												<input type="button"
+													onClick="fn_returning_goods('${item.order_id}')" value="반품완료"
+													disabled />
+											</c:when>
+											<c:otherwise>
+												<input type="button"
+													onClick="fn_returning_goods('${item.order_id}')" value="반품신청"
+													 />
 											</c:otherwise>
 										</c:choose></td>
 								</tr>

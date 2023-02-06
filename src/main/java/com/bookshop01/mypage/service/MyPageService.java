@@ -15,6 +15,8 @@ public interface MyPageService{
 	public MemberVO myDetailInfo(String member_id) throws Exception;
 	public void deleteId(String login_id)throws Exception;
 
+	//추가
+	public void returnOrder(String order_id) throws Exception;
 	public List<OrderVO> listMyCancelHistory(Map dateMap) throws Exception;
 	
 	public List<OrderVO> listMyChangeHistory(Map dateMap) throws Exception;

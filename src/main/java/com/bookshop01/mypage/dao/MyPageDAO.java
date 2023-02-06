@@ -16,6 +16,9 @@ public interface MyPageDAO {
 	public MemberVO selectMyDetailInfo(String member_id) throws DataAccessException;
 	public void updateMyOrderCancel(String order_id) throws DataAccessException;
 	public void deleteId(String login_id) throws DataAccessException;
+	
+	//추가
+	public void updateMyOrderReturn(String order_id) throws DataAccessException;
 	public List<OrderVO> selectMyCancelHistoryList(Map dateMap) throws DataAccessException;
 	
 	public List<OrderVO> selectMyChangeHistoryList(Map dateMap) throws DataAccessException;

@@ -19,7 +19,7 @@ function search_order_history(fixedSearchPeriod){
     formObj.submit();
 }
 
-function fn_return_order(order_id){
+function fn_returning_goods(order_id){
 	var answer=confirm("반품하시겠습니까?");
 	if(answer==true){
 		var formObj=document.createElement("form");
@@ -189,12 +189,12 @@ function fn_return_order(order_id){
 									<td><c:choose>
 											<c:when test="${item.delivery_state=='returning_goods'}">
 												<input type="button"
-													onClick="fn_cancel_order('${item.order_id}')" value="반품완료"
+													onClick="fn_returning_goods('${item.order_id}')" value="반품완료"
 													disabled />
 											</c:when>
 											<c:otherwise>
 												<input type="button"
-													onClick="fn_cancel_order('${item.order_id}')" value="반품신청"
+													onClick="fn_returning_goods('${item.order_id}')" value="반품신청"
 													 />
 											</c:otherwise>
 										</c:choose></td>

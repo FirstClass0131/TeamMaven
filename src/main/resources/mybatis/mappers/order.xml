@@ -47,11 +47,11 @@
 			select * from t_shopping_order
 			where to_char(pay_order_time,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd') 
         	and member_id=#{member_id}
-        	order by pay_order_time desc
+        	order by ORDER_SEQ_NUM
 		]]>
 	</select>
 	<insert id="insertNewOrder" parameterType="orderVO"  >
-	    <selectKey resultType="int" keyProperty="order_id" order="BEFORE">
+	    <selectKey resultType="int" keyProperty="ORDER_SEQ_NUM" order="BEFORE">
 	    	select ifnull(max(order_id),0)+ 1 from t_shopping_order
 	    </selectKey>
 	    <![CDATA[
