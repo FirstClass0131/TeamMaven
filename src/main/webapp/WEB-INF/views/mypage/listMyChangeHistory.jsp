@@ -20,7 +20,7 @@ function search_order_history(fixedSearchPeriod){
 }
 
 function fn_cancel_order(order_id){
-	var answer=confirm("주문을 취소하시겠습니까?");
+	var answer=confirm("반품하시겠습니까?");
 	if(answer==true){
 		var formObj=document.createElement("form");
 		var i_order_id = document.createElement("input"); 
@@ -187,14 +187,15 @@ function fn_cancel_order(order_id){
 									<td><strong>${item.orderer_name }</strong></td>
 									<td><strong>${item.receiver_name }</strong></td>
 									<td><c:choose>
-											<c:when test="${item.delivery_state=='delivery_prepared'}">
+											<c:when test="${item.delivery_state=='returning_goods'}">
 												<input type="button"
-													onClick="fn_cancel_order('${item.order_id}')" value="주문취소" />
+													onClick="fn_cancel_order('${item.order_id}')" value="반품완료"
+													disabled />
 											</c:when>
 											<c:otherwise>
 												<input type="button"
-													onClick="fn_cancel_order('${item.order_id}')" value="주문취소"
-													disabled />
+													onClick="fn_cancel_order('${item.order_id}')" value="반품신청"
+													 />
 											</c:otherwise>
 										</c:choose></td>
 								</tr>
