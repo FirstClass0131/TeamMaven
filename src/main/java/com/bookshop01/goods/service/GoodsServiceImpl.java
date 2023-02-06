@@ -30,7 +30,7 @@ public class GoodsServiceImpl implements GoodsService{
 		goodsMap.put("steadyseller",goodsList);
 		return goodsMap;
 	}
-	
+	@Override
 	public Map goodsDetail(String _goods_id) throws Exception {
 		Map goodsMap=new HashMap();
 		GoodsVO goodsVO = goodsDAO.selectGoodsDetail(_goods_id);
@@ -39,14 +39,19 @@ public class GoodsServiceImpl implements GoodsService{
 		goodsMap.put("imageList", imageList);
 		return goodsMap;
 	}
-	
+	@Override
 	public List<String> keywordSearch(String keyword) throws Exception {
 		List<String> list=goodsDAO.selectKeywordSearch(keyword);
 		return list;
 	}
-	
+	@Override
 	public List<GoodsVO> searchGoods(String searchWord) throws Exception{
 		List goodsList=goodsDAO.selectGoodsBySearchWord(searchWord);
+		return goodsList;
+	}
+	@Override
+	public List<GoodsVO> searchGoods2(String searchWord) throws Exception{
+		List goodsList=goodsDAO.selectGoodsBySearchWord2(searchWord);
 		return goodsList;
 	}
 	

@@ -26,51 +26,51 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 	private AdminMemberService adminMemberService;
 	
 	@RequestMapping(value="/adminMemberMain.do" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap,
-			                           HttpServletRequest request, HttpServletResponse response)  throws Exception{
-		String viewName=(String)request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
+	   public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap,
+	                                    HttpServletRequest request, HttpServletResponse response)  throws Exception{
+	      String viewName=(String)request.getAttribute("viewName");
+	      ModelAndView mav = new ModelAndView(viewName);
 
-		String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");
-		String chapter = dateMap.get("chapter");
-		String pageNum = dateMap.get("pageNum");
-		String beginDate=null,endDate=null;
-		
-		String [] tempDate=calcSearchPeriod(fixedSearchPeriod).split(",");
-		beginDate=tempDate[0];
-		endDate=tempDate[1];
-		dateMap.put("beginDate", beginDate);
-		dateMap.put("endDate", endDate);
-		
-		
-		HashMap<String,Object> condMap=new HashMap<String,Object>();
-		if(chapter== null) {
-			chapter = "1";
-		}
-		condMap.put("chapter",chapter);
-		if(pageNum== null) {
-			pageNum = "1";
-		}
-		condMap.put("pageNum",pageNum);
-		condMap.put("beginDate",beginDate);
-		condMap.put("endDate", endDate);
-		ArrayList<MemberVO> member_list=adminMemberService.listMember(condMap);
-		mav.addObject("member_list", member_list);
-		
-		String beginDate1[]=beginDate.split("-");
-		String endDate2[]=endDate.split("-");
-		mav.addObject("beginYear",beginDate1[0]);
-		mav.addObject("beginMonth",beginDate1[1]);
-		mav.addObject("beginDay",beginDate1[2]);
-		mav.addObject("endYear",endDate2[0]);
-		mav.addObject("endMonth",endDate2[1]);
-		mav.addObject("endDay",endDate2[2]);
-		
-		mav.addObject("chapter", chapter);
-		mav.addObject("pageNum", pageNum);
-		return mav;
-		
-	}
+	      String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");
+	      String chapter = dateMap.get("chapter");
+	      String pageNum = dateMap.get("pageNum");
+	      String beginDate=null,endDate=null;
+	      
+	      String [] tempDate=calcSearchPeriod(fixedSearchPeriod).split(",");
+	      beginDate=tempDate[0];
+	      endDate=tempDate[1];
+	      dateMap.put("beginDate", beginDate);
+	      dateMap.put("endDate", endDate);
+	      
+	      
+	      HashMap<String,Object> condMap=new HashMap<String,Object>();
+	      if(chapter== null) {
+	         chapter = "1";
+	      }
+	      condMap.put("chapter",chapter);
+	      if(pageNum== null) {
+	         pageNum = "1";
+	      }
+	      condMap.put("pageNum",pageNum);
+	      condMap.put("beginDate",beginDate);
+	      condMap.put("endDate", endDate);
+	      ArrayList<MemberVO> member_list=adminMemberService.listMember(condMap);
+	      mav.addObject("member_list", member_list);
+	      
+	      String beginDate1[]=beginDate.split("-");
+	      String endDate2[]=endDate.split("-");
+	      mav.addObject("beginYear",beginDate1[0]);
+	      mav.addObject("beginMonth",beginDate1[1]);
+	      mav.addObject("beginDay",beginDate1[2]);
+	      mav.addObject("endYear",endDate2[0]);
+	      mav.addObject("endMonth",endDate2[1]);
+	      mav.addObject("endDay",endDate2[2]);
+	      
+	      mav.addObject("chapter", chapter);
+	      mav.addObject("pageNum", pageNum);
+	      return mav;
+	      
+	   }
 	@RequestMapping(value="/memberDetail.do" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView memberDetail(HttpServletRequest request, HttpServletResponse response)  throws Exception{
 		String viewName=(String)request.getAttribute("viewName");
@@ -128,7 +128,7 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 		
 	}
 	
-	@RequestMapping(value="/deleteMember.do" ,method={RequestMethod.POST})
+	@RequestMapping(value="/deleteMember.do" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView deleteMember(HttpServletRequest request, HttpServletResponse response)  throws Exception {
 		ModelAndView mav = new ModelAndView();
 		HashMap<String,String> memberMap=new HashMap<String,String>();

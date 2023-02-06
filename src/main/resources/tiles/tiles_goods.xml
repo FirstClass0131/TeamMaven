@@ -14,6 +14,12 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/goods/searchGoods.jsp" />
 	</definition>
+	
+	<definition name="/goods/searchGoods2" extends="baseLayout">
+		<put-attribute name="title" value="상품 검색 결과 페이지" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/goods/searchGoods.jsp" />
+	</definition>
 
 	<definition name="/goods/goodsList" extends="baseLayout">
 		<put-attribute name="title" value="IT/인터넷" />

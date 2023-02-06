@@ -43,12 +43,12 @@
 				<li>
 					<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;국내외 도서</h3>
 					<ul>
-						<li><a href="${contextPath}/goods/searchGoods.do?searchWord=인터넷">IT/인터넷</a></li>
-						<li><a href="${contextPath}/goods/searchGoods.do?searchWord=경제">경제/경영</a></li>
-						<li><a href="${contextPath}/goods/searchGoods.do?searchWord=대학">대학교재</a></li>
-						<li><a href="${contextPath}/goods/searchGoods.do?searchWord=자기">자기계발</a></li>
-						<li><a href="${contextPath}/goods/searchGoods.do?searchWord=과학">자연과학/공학</a></li>
-						<li><a href="${contextPath}/goods/searchGoods.do?searchWord=인문">역사/인문학</a></li>
+						<li><a href="${contextPath}/goods/searchGoods2.do?searchWord=인터넷">IT/인터넷</a></li>
+						<li><a href="${contextPath}/goods/searchGoods2.do?searchWord=경제">경제/경영</a></li>
+						<li><a href="${contextPath}/goods/searchGoods2.do?searchWord=대학">대학교재</a></li>
+						<li><a href="${contextPath}/goods/searchGoods2.do?searchWord=자기">자기계발</a></li>
+						<li><a href="${contextPath}/goods/searchGoods2.do?searchWord=과학">자연과학/공학</a></li>
+						<li><a href="${contextPath}/goods/searchGoods2.do?searchWord=인문">역사/인문학</a></li>
 					</ul>
 				</li>
 				<li>

@@ -28,6 +28,7 @@
 			}
 		}); //end ajax	
 	}
+
 	
 	function displayResult(jsonInfo){
 		var count = jsonInfo.keyword.length;

@@ -73,6 +73,16 @@ order by t_shopping_goods.goods_id
 select t_shopping_goods.*, t_goods_detail_image.fileName from t_shopping_goods, t_goods_detail_image
 where t_shopping_goods.goods_id=t_goods_detail_image.goods_id
 and t_goods_detail_image.filetype='main_image'
+and t_shopping_goods.goods_title like CONCAT('%',#{searchWord}, '%')
+order by t_shopping_goods.goods_entered_date desc	
+		]]>
+	</select>	
+	
+	<select id="selectGoodsBySearchWord2" resultMap="goodsResult"   parameterType="String"  >
+     <![CDATA[
+select t_shopping_goods.*, t_goods_detail_image.fileName from t_shopping_goods, t_goods_detail_image
+where t_shopping_goods.goods_id=t_goods_detail_image.goods_id
+and t_goods_detail_image.filetype='main_image'
 and t_shopping_goods.goods_sort like CONCAT('%',#{searchWord}, '%')
 order by t_shopping_goods.goods_entered_date desc	
 		]]>
@@ -81,10 +91,11 @@ order by t_shopping_goods.goods_entered_date desc
 	<select id="selectKeywordSearch" resultType="String"   parameterType="String"  >
 	    <![CDATA[
         select goods_title from t_shopping_goods 
-        goods_title like  concat('%',#{keyword},'%')
-        order by goods_entered_date desc
+		where goods_title LIKE concat('%',#{keyword},'%')
+        order by goods_entered_date 
 		]]>
 	</select>
+
 	
 
 </mapper> 

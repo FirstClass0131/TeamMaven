@@ -213,7 +213,7 @@ function fn_detail_search(){
     formObj.appendChild(i_search_word);
     document.body.appendChild(formObj); 
     formObj.method="post";
-    formObj.action="/bookshop01/admin/member/memberDetail.do";
+    formObj.action="/bookShop01/admin/member/memberDetail.do";
     formObj.submit();
    
 }
@@ -285,7 +285,7 @@ function fn_detail_search(){
             </tr>
 
             <tr>
-               <td>조회 기간: <select name="beginYear" disabled>
+               <td>조회 기간: <select name="beginYear">
                      <c:forEach var="i" begin="0" end="5">
                         <c:choose>
                            <c:when test="${beginYear==beginYear-i }">
@@ -296,7 +296,7 @@ function fn_detail_search(){
                            </c:otherwise>
                         </c:choose>
                      </c:forEach>
-               </select>년 <select name="beginMonth" disabled>
+               </select>년 <select name="beginMonth" >
                      <c:forEach var="i" begin="1" end="12">
                         <c:choose>
                            <c:when test="${beginMonth==i }">
@@ -314,7 +314,7 @@ function fn_detail_search(){
                            </c:otherwise>
                         </c:choose>
                      </c:forEach>
-               </select>월 <select name="beginDay" disabled>
+               </select>월 <select name="beginDay" >
                      <c:forEach var="i" begin="1" end="31">
                         <c:choose>
                            <c:when test="${beginDay==i }">
@@ -332,18 +332,18 @@ function fn_detail_search(){
                            </c:otherwise>
                         </c:choose>
                      </c:forEach>
-               </select>일 &nbsp; ~ <select name="endYear" disabled>
+               </select>일 &nbsp; ~ <select name="endYear" >
                      <c:forEach var="i" begin="0" end="5">
                         <c:choose>
                            <c:when test="${endYear==endYear-i }">
-                              <option value="${2016-i }" selected>${2016-i  }</option>
+                              <option value="${2023-i }" selected>${2023-i  }</option>
                            </c:when>
                            <c:otherwise>
-                              <option value="${2016-i }">${2016-i }</option>
+                              <option value="${2023-i }">${2023-i }</option>
                            </c:otherwise>
                         </c:choose>
                      </c:forEach>
-               </select>년 <select name="endMonth" disabled>
+               </select>년 <select name="endMonth" >
                      <c:forEach var="i" begin="1" end="12">
                         <c:choose>
                            <c:when test="${endMonth==i }">
@@ -361,7 +361,7 @@ function fn_detail_search(){
                            </c:otherwise>
                         </c:choose>
                      </c:forEach>
-               </select>월 <select name="endDay" disabled>
+               </select>월 <select name="endDay" >
                      <c:forEach var="i" begin="1" end="31">
                         <c:choose>
                            <c:when test="${endDay==i }">
@@ -384,16 +384,20 @@ function fn_detail_search(){
                </td>
             </tr>
             <tr>
-               <td><select name="s_search_type" disabled>
+               <td><select name="s_search_type" >
                      <option value="all" checked>전체</option>
                      <option value="member_name">회원이름</option>
                      <option value="member_id">회원아이디</option>
                      <option value="member_hp_num">회원휴대폰번호</option>
                      <option value="member_addr">회원주소</option>
-               </select> <input type="text" size="30" name="t_search_word" disabled /> <input
-                  type="button" value="조회" name="btn_search"
-                  onClick="fn_detail_search()" disabled /></td>
+               </select> <input type="text" size="30" name="t_search_word"  /> 
+               
+               <input
+                  type="button" value="조회" name="btn_search" onClick="fn_detail_search()"  />
+                  
+              </td>
             </tr>
+            
          </tbody>
       </table>
       <div class="clear"></div>
@@ -434,7 +438,7 @@ function fn_detail_search(){
                               value="${fn:split(join_date,' ')}" /> <strong><c:out
                                  value="${arr[0]}" /></strong></td>
                         <td width=10%><c:choose>
-                              <c:when test="${item.del_yn=='N' }">
+                              <c:when test="${item.del_yn=='Y' }">
                                  <strong>탈퇴</strong>
                               </c:when>
                               <c:otherwise>

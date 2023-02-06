@@ -62,12 +62,24 @@ public class GoodsControllerImpl extends BaseController implements GoodsControll
 	   // System.out.println(jsonInfo);
 	    return jsonInfo ;
 	}
+	
 	@Override
 	@RequestMapping(value="/searchGoods.do" ,method = RequestMethod.GET)
 	public ModelAndView searchGoods(@RequestParam("searchWord") String searchWord,
 			                       HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String viewName=(String)request.getAttribute("viewName");
 		List<GoodsVO> goodsList=goodsService.searchGoods(searchWord);
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("goodsList", goodsList);
+		return mav;
+		
+	}
+	@Override
+	@RequestMapping(value="/searchGoods2.do" ,method = RequestMethod.GET)
+	public ModelAndView searchGoods2(@RequestParam("searchWord") String searchWord,
+			                       HttpServletRequest request, HttpServletResponse response) throws Exception{
+		String viewName=(String)request.getAttribute("viewName");
+		List<GoodsVO> goodsList=goodsService.searchGoods2(searchWord);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("goodsList", goodsList);
 		return mav;

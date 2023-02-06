@@ -264,8 +264,8 @@ function fn_delete_member(member_id ,del_yn){
     
     frm_mod_member.appendChild(i_member_id);
     frm_mod_member.appendChild(i_del_yn);
-    frm_mod_member.method="post";
-    frm_mod_member.action="/bookshop01/admin/member/deleteMember.do";
+    frm_mod_member.method="GET";
+    frm_mod_member.action="/bookShop01/admin/member/deleteMember.do";
     frm_mod_member.submit();
 }
 </script>

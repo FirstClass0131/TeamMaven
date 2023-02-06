@@ -280,11 +280,11 @@ function fn_detail_search(){
 						&nbsp;&nbsp;&nbsp;</td>
 				</tr>
 				<tr>
-					<td><select name="curYear">
+					<TD><select name="curYear">
 							<c:forEach var="i" begin="0" end="5">
 								<c:choose>
 									<c:when test="${endYear==endYear-i}">
-										<option value="${endYear }" selected>${endYear  }</option>
+										<option value="${endYear}" selected>${endYear}</option>
 									</c:when>
 									<c:otherwise>
 										<option value="${endYear-i }">${endYear-i }</option>
@@ -305,7 +305,7 @@ function fn_detail_search(){
 					</select>월 <select name="curDay">
 							<c:forEach var="i" begin="1" end="31">
 								<c:choose>
-									<c:when test="${endDay==i }">
+									<c:when test="${endDay==i}">
 										<option value="${i }" selected>${i }</option>
 									</c:when>
 									<c:otherwise>
