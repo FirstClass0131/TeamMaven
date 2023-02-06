@@ -119,7 +119,7 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		dateMap.put("beginDate", beginDate);
 		dateMap.put("endDate", endDate);
 		dateMap.put("member_id", member_id);
-		List<OrderVO> myOrderHistList=myPageService.listMyOrderHistory(dateMap);
+		List<OrderVO> myCancelHistList=myPageService.listMyCancelHistory(dateMap);
 		
 		String beginDate1[]=beginDate.split("-"); //�˻����ڸ� ��,��,�Ϸ� �и��ؼ� ȭ�鿡 �����մϴ�.
 		String endDate1[]=endDate.split("-");
@@ -129,11 +129,11 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		mav.addObject("endYear",endDate1[0]);
 		mav.addObject("endMonth",endDate1[1]);
 		mav.addObject("endDay",endDate1[2]);
-		mav.addObject("myOrderHistList", myOrderHistList);
+		mav.addObject("myCancelHistList", myCancelHistList);
 		return mav;
 	}	
 		
-	//change �߰�
+	//change �߰�
 	
 	@Override
 	@RequestMapping(value="/listMyChangeHistory.do" ,method = RequestMethod.GET)
@@ -154,7 +154,7 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		dateMap.put("beginDate", beginDate);
 		dateMap.put("endDate", endDate);
 		dateMap.put("member_id", member_id);
-		List<OrderVO> myOrderHistList=myPageService.listMyOrderHistory(dateMap);
+		List<OrderVO> myChangeHistList=myPageService.listMyChangeHistory(dateMap);
 		
 		String beginDate1[]=beginDate.split("-"); //�˻����ڸ� ��,��,�Ϸ� �и��ؼ� ȭ�鿡 �����մϴ�.
 		String endDate1[]=endDate.split("-");
@@ -164,7 +164,7 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		mav.addObject("endYear",endDate1[0]);
 		mav.addObject("endMonth",endDate1[1]);
 		mav.addObject("endDay",endDate1[2]);
-		mav.addObject("myOrderHistList", myOrderHistList);
+		mav.addObject("myChangeHistList", myChangeHistList);
 		return mav;
 	}	
 	
@@ -175,6 +175,17 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		ModelAndView mav = new ModelAndView();
 		myPageService.cancelOrder(order_id);
 		mav.addObject("message", "cancel_order");
+		mav.setViewName("redirect:/mypage/myPageMain.do");
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/returnMyOrder.do" ,method = RequestMethod.POST)
+	public ModelAndView returnMyOrder(@RequestParam("order_id")  String order_id,
+			                         HttpServletRequest request, HttpServletResponse response)  throws Exception {
+		ModelAndView mav = new ModelAndView();
+		myPageService.cancelOrder(order_id);
+		mav.addObject("message", "return_order");
 		mav.setViewName("redirect:/mypage/myPageMain.do");
 		return mav;
 	}

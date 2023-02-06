@@ -35,11 +35,11 @@ public class MyPageServiceImpl  implements MyPageService{
 	}
 	
 	public List<OrderVO> listMyCancelHistory(Map dateMap) throws Exception{
-		return myPageDAO.selectMyOrderHistoryList(dateMap);
+		return myPageDAO.selectMyCancelHistoryList(dateMap);
 	}
 	
 	public List<OrderVO> listMyChangeHistory(Map dateMap) throws Exception{
-		return myPageDAO.selectMyOrderHistoryList(dateMap);
+		return myPageDAO.selectMyChangeHistoryList(dateMap);
 	}
 	
 	public MemberVO  modifyMyInfo(Map memberMap) throws Exception{

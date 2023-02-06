@@ -19,7 +19,7 @@ function search_order_history(fixedSearchPeriod){
     formObj.submit();
 }
 
-function fn_cancel_order(order_id){
+function fn_return_order(order_id){
 	var answer=confirm("반품하시겠습니까?");
 	if(answer==true){
 		var formObj=document.createElement("form");
@@ -31,7 +31,7 @@ function fn_cancel_order(order_id){
 	    formObj.appendChild(i_order_id);
 	    document.body.appendChild(formObj); 
 	    formObj.method="post";
-	    formObj.action="${contextPath}/mypage/cancelMyOrder.do";
+	    formObj.action="${contextPath}/mypage/returnMyOrder.do";
 	    formObj.submit();	
 	}
 }
@@ -132,16 +132,16 @@ function fn_cancel_order(order_id){
 				<td>주문상태</td>
 				<td>주문자</td>
 				<td>수령자</td>
-				<td>주문취소</td>
+				<td>반품신청</td>
 			</tr>
 			<c:choose>
-				<c:when test="${empty myOrderHistList }">
+				<c:when test="${empty myChangeHistList }">
 					<tr>
 						<td colspan=8 class="fixed"><strong>주문한 상품이 없습니다.</strong></td>
 					</tr>
 				</c:when>
 				<c:otherwise>
-					<c:forEach var="item" items="${myOrderHistList }" varStatus="i">
+					<c:forEach var="item" items="${myChangeHistList }" varStatus="i">
 						<c:choose>
 							<c:when test="${item.order_id != pre_order_id }">
 								<tr>
@@ -150,7 +150,7 @@ function fn_cancel_order(order_id){
 									</a></td>
 									<td><strong>${item.pay_order_time }</strong></td>
 									<td><strong> <c:forEach var="item2"
-												items="${myOrderHistList}" varStatus="j">
+												items="${myChangeHistList}" varStatus="j">
 												<c:if test="${item.order_id ==item2.order_id}">
 													<a
 														href="${contextPath}/goods/goodsDetail.do?goods_id=${item2.goods_id }">${item2.goods_title }</a>
@@ -159,7 +159,7 @@ function fn_cancel_order(order_id){
 											</c:forEach>
 									</strong></td>
 									<td><strong> <c:forEach var="item2"
-												items="${myOrderHistList}" varStatus="j">
+												items="${myChangeHistList}" varStatus="j">
 												<c:if test="${item.order_id ==item2.order_id}">
 				             ${item.goods_sales_price*item.order_goods_qty }원/${item.order_goods_qty }<br>
 												</c:if>

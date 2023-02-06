@@ -135,13 +135,13 @@ function fn_cancel_order(order_id){
 				<td>주문취소</td>
 			</tr>
 			<c:choose>
-				<c:when test="${empty myOrderHistList }">
+				<c:when test="${empty myCancelHistList }">
 					<tr>
 						<td colspan=8 class="fixed"><strong>주문한 상품이 없습니다.</strong></td>
 					</tr>
 				</c:when>
 				<c:otherwise>
-					<c:forEach var="item" items="${myOrderHistList }" varStatus="i">
+					<c:forEach var="item" items="${myCancelHistList }" varStatus="i">
 						<c:choose>
 							<c:when test="${item.order_id != pre_order_id }">
 								<tr>
@@ -150,7 +150,7 @@ function fn_cancel_order(order_id){
 									</a></td>
 									<td><strong>${item.pay_order_time }</strong></td>
 									<td><strong> <c:forEach var="item2"
-												items="${myOrderHistList}" varStatus="j">
+												items="${myCancelHistList}" varStatus="j">
 												<c:if test="${item.order_id ==item2.order_id}">
 													<a
 														href="${contextPath}/goods/goodsDetail.do?goods_id=${item2.goods_id }">${item2.goods_title }</a>
@@ -159,7 +159,7 @@ function fn_cancel_order(order_id){
 											</c:forEach>
 									</strong></td>
 									<td><strong> <c:forEach var="item2"
-												items="${myOrderHistList}" varStatus="j">
+												items="${myCancelHistList}" varStatus="j">
 												<c:if test="${item.order_id ==item2.order_id}">
 				             ${item.goods_sales_price*item.order_goods_qty }원/${item.order_goods_qty }<br>
 												</c:if>

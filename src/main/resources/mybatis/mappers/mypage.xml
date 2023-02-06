@@ -71,6 +71,7 @@
 		  select * from t_shopping_order
           where member_id=#{member_id}
           and  to_char(pay_order_time,'yyyy-mm-dd')  between #{beginDate} and #{endDate}
+          and t_shopping_order.delivery_state = "cancel_order"
           order by pay_order_time desc
     	]]>
 	</select>	
@@ -80,6 +81,7 @@
 		  select * from t_shopping_order
           where member_id=#{member_id}
           and  to_char(pay_order_time,'yyyy-mm-dd')  between #{beginDate} and #{endDate}
+          and t_shopping_order.delivery_state = "returning_goods"
           order by pay_order_time desc
     	]]>
 	</select>	
